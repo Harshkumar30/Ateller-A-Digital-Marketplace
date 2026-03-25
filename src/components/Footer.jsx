@@ -44,8 +44,7 @@ export default function Footer() {
       </div>
       <div className="footer-bottom-luxe">
         <div className="container flex-between">
-          <p className="label-md">© 2024 THE DIGITAL ATELIER</p>
-          <p className="label-md">VOL. 01 ISSUE 04</p>
+          <p className="label-md">© 202^ THE DIGITAL ATELIER</p>
         </div>
       </div>
     </footer>

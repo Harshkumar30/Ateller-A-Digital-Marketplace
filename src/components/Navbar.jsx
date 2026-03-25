@@ -55,7 +55,7 @@ export default function Navbar({ onSearch }) {
             <Search size={18} strokeWidth={1.2} className="search-icon" />
             <input 
               type="text" 
-              placeholder="Search Artifacts..." 
+              placeholder="Search Products..." 
               className="nav-search-input input-minimal"
               value={search}
               onChange={(e) => setSearch(e.target.value)}

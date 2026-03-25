@@ -1,4 +1,4 @@
-import { createContext, useContext, useState} from 'react';
+import { createContext, useContext, useState } from 'react';
 import axios from 'axios';
 
 const AuthContext = createContext();
@@ -17,6 +17,7 @@ export function AuthProvider({ children }) {
       localStorage.setItem('luxe_user', JSON.stringify(data.user));
       return { success: true };
     } catch (err) {
+      console.error('Register error:', err);
       return { success: false, error: err.response?.data?.error || 'Registration failed' };
     }
   };
@@ -28,6 +29,7 @@ export function AuthProvider({ children }) {
       localStorage.setItem('luxe_user', JSON.stringify(data.user));
       return { success: true };
     } catch (err) {
+      console.error('Login error:', err);
       return { success: false, error: err.response?.data?.error || 'Invalid credentials' };
     }
   };

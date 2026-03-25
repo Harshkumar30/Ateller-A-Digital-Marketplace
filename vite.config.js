@@ -10,7 +10,7 @@ const excelStoragePlugin = () => ({
     server.middlewares.use((req, res, next) => {
       // Create a URL object to handle query params and ensure clean path matching
       const url = req.url.split('?')[0];
-      
+
       // Test endpoint to verify plugin is active
       if (url === '/api/test' && req.method === 'GET') {
         res.statusCode = 200;
@@ -27,20 +27,24 @@ const excelStoragePlugin = () => ({
               res.statusCode = 400;
               return res.end(JSON.stringify({ error: 'Empty request body' }));
             }
-            
+
             const data = JSON.parse(body);
-            const FILE_PATH = path.resolve(process.cwd(), 'users.xlsx');
-            
+            const FILE_PATH = path.resolve(process.cwd(), 'src', 'context', 'users.xlsx');
+
             // Helper: Read users
             const getUsers = () => {
+              let debugInfo = { path: FILE_PATH, exists: false, error: null };
               try {
-                if (!fs.existsSync(FILE_PATH)) return [];
-                const workbook = xlsx.readFile(FILE_PATH);
+                debugInfo.exists = fs.existsSync(FILE_PATH);
+                if (!debugInfo.exists) return { users: [], debugInfo };
+                const fileBuffer = fs.readFileSync(FILE_PATH);
+                const workbook = xlsx.read(fileBuffer, { type: 'buffer' });
                 const sheet = workbook.Sheets[workbook.SheetNames[0]];
-                return xlsx.utils.sheet_to_json(sheet);
+                return { users: xlsx.utils.sheet_to_json(sheet), debugInfo };
               } catch (e) {
                 console.error('Error reading users.xlsx:', e.message);
-                return [];
+                debugInfo.error = e.message;
+                return { users: [], debugInfo };
               }
             };
 
@@ -57,7 +61,7 @@ const excelStoragePlugin = () => ({
               }
             };
 
-            const users = getUsers();
+            const { users, debugInfo } = getUsers();
 
             if (url === '/api/register') {
               const { name, email, password } = data;
@@ -83,7 +87,7 @@ const excelStoragePlugin = () => ({
               if (!user) {
                 res.statusCode = 401;
                 res.setHeader('Content-Type', 'application/json');
-                return res.end(JSON.stringify({ error: 'Invalid credentials' }));
+                return res.end(JSON.stringify({ error: 'Invalid credentials', debug: { receivedEmail: email, receivedPassword: password, debugInfo, usersCount: users.length, allUsers: users.map(u => ({ e: u.email, p: u.password })) } }));
               }
               res.statusCode = 200;
               res.setHeader('Content-Type', 'application/json');
@@ -106,4 +110,5 @@ const excelStoragePlugin = () => ({
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), excelStoragePlugin()],
+  assetsInclude: ['**/*.xlsx']
 })
