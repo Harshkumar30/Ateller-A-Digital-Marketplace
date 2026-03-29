@@ -45,7 +45,7 @@ export default function Navbar({ onSearch }) {
               ))}
             </div>
           </div>
-          <Link to="/shop?category=electronics" className="nav-link">SHOP</Link>
+          <Link to="/shop?category=all" className="nav-link">SHOP</Link>
           <Link to="/" className="nav-link">Home</Link>
         </div>
 

@@ -18,7 +18,7 @@ export default function ProductDetail() {
 
   if (!product) return (
     <div className="not-found-luxe vast-space">
-      <h2 className="display-sm">Artifact not found.</h2>
+      <h2 className="display-sm">Product not found.</h2>
       <Link to="/shop" className="btn-tertiary">Return to Collection</Link>
     </div>
   );
@@ -89,7 +89,7 @@ export default function ProductDetail() {
 
               <div className="pd-action-grid-luxe">
                 <button className="btn btn-primary pd-btn-luxe" onClick={handleAddToCart} disabled={!product.inStock}>
-                  {inCart ? 'ADD MORE' : 'ADD TO BAG'}
+                  {inCart ? 'ADD MORE' : 'ADD TO CARt'}
                 </button>
                 <button className="btn btn-secondary pd-btn-luxe" onClick={handleBuyNow} disabled={!product.inStock}>
                   BUY NOW
@@ -104,7 +104,7 @@ export default function ProductDetail() {
             <div className="pd-perks-luxe">
               <div className="perk-item-luxe">
                 <Truck size={16} strokeWidth={1} />
-                <span className="label-md">COMPLIMENTARY SHIPPING</span>
+                <span className="label-md">FREE SHIPPING</span>
               </div>
               <div className="perk-item-luxe">
                 <Shield size={16} strokeWidth={1} />

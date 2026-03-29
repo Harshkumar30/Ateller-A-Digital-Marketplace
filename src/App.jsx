@@ -12,6 +12,7 @@ import Checkout from './pages/Checkout';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Profile from './pages/Profile';
+import Wishlist from './pages/Wishlist';
 
 import { CartProvider } from './context/CartContext';
 import { WishlistProvider } from './context/WishlistContext';
@@ -38,6 +39,7 @@ export default function App() {
                   <Route path="/shop" element={<Shop searchQuery={searchQuery} />} />
                   <Route path="/product/:id" element={<ProductDetail />} />
                   <Route path="/cart" element={<Cart />} />
+                  <Route path="/wishlist" element={<Wishlist />} />
                   
                   <Route path="/checkout" element={
                     <ProtectedRoute>

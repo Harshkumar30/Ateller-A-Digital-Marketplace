@@ -110,7 +110,7 @@ export const products = [
   },
   {
     id: 11, category: 'home',
-    name: 'Spinn Pop',
+    name: 'Spinn Pro',
     price: 11999, originalPrice: 14999, rating: 4.6, reviews: 2043,
     badge: 'Best Seller',
     image: 'https://cdn.swell.store/spinn-marketplace/66c73eaf83f7820012f72906/7a023345cd31528ff82092fb01b24d75/1.jpg?width=1240',
@@ -128,6 +128,16 @@ export const products = [
     tags: ['tablet', 'apple', 'premium'],
     inStock: true,
   },
+  {
+    id: 13, category: 'electronics',
+    name: 'Aula F75',
+    price: 4999, originalPrice: 5999, rating: 4.9, reviews: 1456,
+    badge: 'New Arrival',
+    image: 'https://m.media-amazon.com/images/I/61RWSNffoWL._SX522_.jpg',
+    description: 'Aula F75 75% Wireless Mechanical Keyboard | Hot Swappable | Pre-lubed Linear Switches | RGB Backlit | 2.4GHz/Type-C/Bluetooth Gaming Keyboard (Cedar Green, Reaper Switch)',
+    tags: ['wireless', 'aula', 'premium'],
+    inStock: true,
+  }
 ];
 
 export const formatPrice = (price) =>

@@ -51,7 +51,7 @@ export default function Home() {
       <section className="featured-section vast-space">
         <div className="container">
           <div className="section-header-luxe">
-            <h2 className="display-md">Featured Artifacts</h2>
+            <h2 className="display-md">Featured Products</h2>
             <Link to="/shop" className="btn-tertiary">View All</Link>
           </div>
           

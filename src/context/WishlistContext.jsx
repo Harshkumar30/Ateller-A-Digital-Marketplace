@@ -15,5 +15,6 @@ export function WishlistProvider({ children }) {
   );
 }
 
-// eslint-disable-next-line react-refresh/only-export-components
-export const useWishlist = () => useContext(WishlistContext);
+export function useWishlist() {
+  return useContext(WishlistContext);
+}
