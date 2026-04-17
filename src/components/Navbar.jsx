@@ -1,8 +1,9 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { ShoppingBag, Heart, Search, User } from 'lucide-react';
+import { ShoppingBag, Heart, Search, User, Sun, Moon } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
 import { useAuth } from '../context/AuthContext';
+import { useTheme } from '../context/ThemeContext';
 import { useState } from 'react';
 import './Navbar.css';
 import { categories } from '../data/products';
@@ -11,6 +12,7 @@ export default function Navbar({ onSearch }) {
   const { items } = useCart();
   const { wishlist } = useWishlist();
   const { user, isAuthenticated } = useAuth();
+  const { toggleTheme } = useTheme();
   const [search, setSearch] = useState('');
   const navigate = useNavigate();
 
@@ -61,6 +63,21 @@ export default function Navbar({ onSearch }) {
               onChange={(e) => setSearch(e.target.value)}
             />
           </form>
+
+          {/* Theme Toggle */}
+          <button
+            className="theme-toggle"
+            onClick={toggleTheme}
+            aria-label="Toggle dark/light mode"
+            title="Toggle theme"
+          >
+            <span className="toggle-icon icon-sun">
+              <Sun size={20} strokeWidth={1.4} />
+            </span>
+            <span className="toggle-icon icon-moon">
+              <Moon size={20} strokeWidth={1.4} />
+            </span>
+          </button>
 
           <Link to="/wishlist" className="nav-icon-btn">
             <Heart size={20} strokeWidth={1.2} />

@@ -20,7 +20,7 @@
 }
 
 .footer-tagline-luxe {
-  opacity: 0.6;
+  opacity: 0.85;
   max-width: 320px;
   margin-bottom: 40px;
 }
@@ -32,7 +32,7 @@
 
 .social-btn-luxe {
   color: #fff;
-  opacity: 0.6;
+  opacity: 0.8;
   transition: var(--transition);
 }
 
@@ -49,7 +49,7 @@
 
 .footer-col-luxe h4 {
   margin-bottom: 32px;
-  opacity: 0.4;
+  opacity: 0.75;
 }
 
 .footer-link-luxe {
@@ -57,7 +57,7 @@
   font-family: var(--font-body);
   font-size: 0.875rem;
   color: #fff;
-  opacity: 0.6;
+  opacity: 0.85;
   margin-bottom: 12px;
   transition: var(--transition);
 }
@@ -76,7 +76,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  opacity: 0.4;
+  opacity: 0.7;
 }
 
 @media (max-width: 1024px) {

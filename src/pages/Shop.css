@@ -35,7 +35,7 @@
 
 .filter-group-luxe h4 {
   margin-bottom: 24px;
-  opacity: 0.4;
+  opacity: 0.75;
 }
 
 .cat-list {
@@ -49,7 +49,7 @@
   font-family: var(--font-body);
   font-size: 0.875rem;
   text-align: left;
-  opacity: 0.6;
+  opacity: 0.85;
   transition: var(--transition);
 }
 
@@ -81,7 +81,7 @@
 .price-labels {
   display: flex;
   justify-content: space-between;
-  opacity: 0.6;
+  opacity: 0.85;
 }
 
 .reset-btn {

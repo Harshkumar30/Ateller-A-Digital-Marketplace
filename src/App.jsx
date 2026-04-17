@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useState } from 'react';
 import { Toaster } from 'react-hot-toast';
+import { ThemeProvider } from './context/ThemeContext';
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -27,6 +28,7 @@ export default function App() {
   const [searchQuery, setSearchQuery] = useState('');
 
   return (
+    <ThemeProvider>
     <div className="luxe-app">
       <AuthProvider>
         <CartProvider>
@@ -66,5 +68,6 @@ export default function App() {
         </CartProvider>
       </AuthProvider>
     </div>
+    </ThemeProvider>
   );
 }
