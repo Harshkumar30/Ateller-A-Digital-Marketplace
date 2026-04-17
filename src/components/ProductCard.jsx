@@ -9,7 +9,7 @@ import './ProductCard.css';
 export default function ProductCard({ product }) {
   const { addToCart, isInCart } = useCart();
   const { toggle, isWishlisted } = useWishlist();
-  
+
   const wishlisted = isWishlisted(product.id);
   const inCart = isInCart(product.id);
 
@@ -31,16 +31,16 @@ export default function ProductCard({ product }) {
       {/* Image Container with Tonal Background */}
       <div className="pc-image-container product-image-bg">
         <img src={product.image} alt={product.name} className="pc-image" loading="lazy" />
-        
+
         {/* Editorial Badge */}
         {product.badge && (
           <div className="pc-badge label-md luxe-badge">{product.badge}</div>
         )}
-        
+
         {/* Wishlist Icon - Minimal */}
-        <button 
-          className={`pc-wishlist-btn ${wishlisted ? 'active' : ''}`} 
-          onClick={handleWishlist} 
+        <button
+          className={`pc-wishlist-btn ${wishlisted ? 'active' : ''}`}
+          onClick={handleWishlist}
           aria-label="Wishlist"
         >
           <Heart size={18} strokeWidth={1} fill={wishlisted ? 'var(--error)' : 'none'} />
@@ -61,9 +61,9 @@ export default function ProductCard({ product }) {
               <span className="pc-price-old">{formatPrice(product.originalPrice)}</span>
             )}
           </div>
-          
-          <button 
-            className={`pc-add-btn ${inCart ? 'in-cart' : ''}`} 
+
+          <button
+            className={`pc-add-btn ${inCart ? 'in-cart' : ''}`}
             onClick={handleAddToCart}
             disabled={!product.inStock}
           >
