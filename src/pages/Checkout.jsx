@@ -17,6 +17,19 @@ export default function Checkout() {
 
   const handleChange = e => setForm(f => ({ ...f, [e.target.name]: e.target.value }));
   const nextStep = () => setStep(s => s + 1);
+  const handleDeliverySubmit = () => {
+    const { name, email, phone, address, city, pincode } = form;
+    if (!name.trim() || !email.trim() || !phone.trim() || !address.trim() || !city.trim() || !pincode.trim()) {
+      return toast.error('Please fill all delivery details.', { className: 'hot-toast' });
+    }
+    if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
+      return toast.error('Please enter a valid email address.', { className: 'hot-toast' });
+    }
+    if (phone.replace(/\D/g, '').length < 10) {
+      return toast.error('Please enter a valid 10-digit phone number.', { className: 'hot-toast' });
+    }
+    nextStep();
+  };
   const placeOrder = () => {
     clearCart();
     navigate('/order-confirmed');
@@ -75,7 +88,7 @@ export default function Checkout() {
                     <input className="input-minimal" name="pincode" value={form.pincode} onChange={handleChange} />
                   </div>
                 </div>
-                <button className="btn btn-primary checkout-next-btn" onClick={nextStep}>CONTINUE TO PAYMENT</button>
+                <button className="btn btn-primary checkout-next-btn" onClick={handleDeliverySubmit}>CONTINUE TO PAYMENT</button>
               </div>
             )}
 
